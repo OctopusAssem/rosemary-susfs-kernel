@@ -1,0 +1,131 @@
+name: Build Redmi Note 10S (MIUI 14 / A13) KernelSU-Next + SUSFS
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+env:
+  DEVICE_NAME: "redmi_note_10s"
+  DEVICE_CODENAME: "rosemary"
+
+  CUSTOM_CMDS: "CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- CROSS_COMPILE_COMPAT=arm-linux-gnueabi-"
+  EXTRA_CMDS: "CLANG_TRIPLE=aarch64-linux-gnu- LLVM=1 LLVM_IAS=1 CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip READELF=llvm-readelf HOSTCC=clang HOSTCXX=clang++"
+
+  KERNEL_SOURCE: "https://github.com/gabutgadungan/android_kernel_xiaomi_rosemary"
+  KERNEL_BRANCH: "rosemary-13"
+
+  CLANG_SOURCE: "https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman"
+  CLANG_BRANCH: ""
+  GCC_GNU: true
+  GCC_64_SOURCE: ""
+  GCC_64_BRANCH: ""
+  GCC_32_SOURCE: ""
+  GCC_32_BRANCH: ""
+
+  DEFCONFIG_SOURCE: ""
+  DEFCONFIG_NAME: "rosemary_defconfig"
+  DEFCONFIG_ORIGIN_IMAGE: ""
+  DEFCONFIG_FROM_BOOT: false
+
+  KERNELSU_SOURCE: ""
+  KERNELSU_BRANCH: ""
+  KERNELSU_AUTO_GET: "true"
+  KERNELSU_AUTO_FORK: "resukisu"
+  KERNELSU_METHOD: "shell"
+
+  SUSFS_ENABLE: "true"
+  SUSFS_FIXED: "true"
+
+  AK3_SOURCE: "https://github.com/osm0sis/AnyKernel3.git"
+  AK3_BRANCH: "master"
+  BOOT_SOURCE: ""
+  NEED_DTBO: false
+  NEED_SAFE_DTBO: false
+  PACK_METHOD: "AnyKernel3"
+  PACK_KMODULES: "false"
+  ROM_TEXT: "miui_a13"
+  PYTHON_VERSION: "3"
+
+  PATCHES_SOURCE: "JackA1ltman/NonGKI_Kernel_Patches"
+  PATCHES_BRANCH: "mi_kernel"
+  SUSFS_FOLDER_FIXED: ""
+  SUSFS_PATCH_FIXED: ""
+
+  REKERNEL_ENABLE: "false"
+  DROIDSPACES_ENABLE: "false"
+  NOMOUNT_ENABLE: "false"
+  HOOK_METHOD: "syscall"
+  KPM_ENABLE: "false"
+  KPM_INLINE: "false"
+  KPM_KPATCH_NEXT: "false"
+  KPM_PATCH_SOURCE: ""
+  BASEBAND_GUARD_ENABLE: "false"
+  BASEBAND_GUARD_BOOT: "false"
+  GENERATE_DTB: "false"
+  GENERATE_CHIP: "mediatek"
+  BUILD_DEBUGGER: "true"
+  SKIP_PATCH: "true"
+  BUILD_OTHER_CONFIG: "false"
+  MERGE_CONFIG_FILES: ""
+  FREE_MORE_SPACE: "false"
+
+jobs:
+  build-kernel:
+    name: Redmi Note 10S (rosemary) A13
+    runs-on: ubuntu-24.04
+    env:
+      CCACHE_COMPILERCHECK: "%compiler% -dumpmachine; %compiler% -dumpversion"
+      CCACHE_NOHASHDIR: "true"
+      CCACHE_HARDLINK: "true"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Compilation environment preparation
+        uses: ./.github/workflows/build-env
+
+      - name: Get necessary tools
+        uses: ./.github/workflows/build-ready
+
+      - name: Patch Kernel of SUSFS
+        uses: ./.github/workflows/patch-susfs
+
+      - name: Patch for no-kprobe
+        uses: ./.github/workflows/patch-no-kprobe
+
+      - name: Extra Kernel Options
+        run: |
+          cd $GITHUB_WORKSPACE/device_kernel
+           echo "[+] Applying rosemary SUSFS fixed patch"
+           patch -p1 --fuzz=0 < $GITHUB_WORKSPACE/rosemary_susfs_fixed.patch
+           echo "[+] Verifying version-spoof patch"
+           grep -q "susfs_is_uname_spoof_buffer_set" fs/proc/version.c
+           grep -q "susfs_spoof_uname" kernel/utsname_sysctl.c
+           grep -q "susfs_spoof_uname" kernel/sys.c
+           echo "[+] Version-spoof patch verified OK"
+           grep -q "4.14.186-perf-g079d9bd73b14" init/version.c
+           echo "[+] Hardcoded kernel version verified OK"
+           echo "[+] Fix ksu_handle_stat flag -> flags"
+           sed -i 's/ksu_handle_stat(&dfd, &fname, &flag);/ksu_handle_stat(\&dfd, \&fname, \&flags);/' fs/stat.c
+
+      - name: Patch Kernel of Re:Kernel
+        uses: ./.github/workflows/patch-rekernel
+
+      - name: Patch Kernel of Droidspaces
+        uses: ./.github/workflows/patch-droidspaces
+
+      - name: Patch Kernel of Baseband Guard
+        uses: ./.github/workflows/patch-baseband-guard
+
+      - name: Patch Kernel of NoMount
+        uses: ./.github/workflows/patch-nomount
+
+      - name: Build Process
+        uses: ./.github/workflows/build-process
+
+      - name: Pack Process
+        uses: ./.github/workflows/pack-process
+
+      - name: Upload Artifacts
+        uses: ./.github/workflows/upload-files
