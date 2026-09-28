@@ -140,7 +140,7 @@ ReSukiSU **لا يملك** خيار «Hide manager» مثل Magisk. البديل
 
 ## شكر وتقدير | Credits
 
-* **User Creator:** Assem Hussein
+* **User Creator:** *Assem_Hussein*
 * **Kernel source:** [gabutgadungan/android_kernel_xiaomi_rosemary](https://github.com/gabutgadungan/android_kernel_xiaomi_rosemary) (`rosemary-13`)
 * **Root manager:** [ReSukiSU](https://github.com/ReSukiSU/ReSukiSU)
 * **SUSFS:** [simonpunk/susfs4ksu](https://github.com/simonpunk/susfs4ksu)
