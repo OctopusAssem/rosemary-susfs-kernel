@@ -156,3 +156,16 @@ ReSukiSU **لا يملك** خيار «Hide manager» مثل Magisk. البديل
 **[English]** Flash at your own risk. Verify your ROM matches (MIUI 14 / Android 13) before flashing and always keep a backup of your stock boot image. Provided as-is, no warranty.
 
 Licensed under **GPL-2.0** (kernel source).
+
+
+---
+
+## ملاحظات مهمة | Important notes
+
+- **عام ليس مشهور**: هذا المستودع عام، وأي شخص لديه الرابط يمكنه الوصول إلى كل الملفات وتنزيلها، لكنه لا يظهر تلقائيا في محركات البحث.
+  
+  **Public is not discoverable:** anyone with the link can view and download everything, but the repo does not automatically appear in search results.
+- **سلامة الحساب**: ي نصيحة بتغيير كلمة مرور GitHub وتفعيل المصادقة الثنائية (2FA).
+- **تنبيه أمني/قانوني**: الحزمة تحتوي على مدير روت معدل (APK) باسم System Update. استخدمها على مسؤوليتك الشخصية وعلى جهازك فقط، ولا تقدمها لأي شخص على أنها تحديث نظام حقيقي.
+- **خصوصية**: مفتاح التوقيع الخاص (ks.jks) غير مرفوع في هذا المستودع عن قصد.
+- **البصمة (Dynamic Manager)**: 826 / eac9123b4d9093377df677052ab3a6ecea7d99d81a58d5cf8853998bc443050d
