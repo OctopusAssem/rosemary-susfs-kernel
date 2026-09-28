@@ -67,6 +67,21 @@ Everything is included: the patches, the GitHub Actions build workflow, ready-to
 
 Flashable kernel: **`rosemary-miui_a13-v4-f2fs-fixed-AnyKernel3.zip`** — see the **Releases** section.
 
+### الحزمة الكاملة | Complete KIT
+
+**`rosemary-complete-KIT.zip`** — كل حاجة في ملف واحد:
+
+* الكيرنل الجاهز للفلاش (`kernel-rosemary-v4-AnyKernel3.zip`)
+* مدير الروت المخفي (`SystemUpdate-manager-v4.2.0-rc3.apk` — باكدج `com.android.system.update`، موقّع v2 فقط)
+* سكربت تشغيل بنقرة واحدة (`finish-hide-manager.bat` / `.sh`) — تركيب + تسجيل البصمة في الكيرنل + إعادة تشغيل
+* `fingerprint.txt` + `README.txt`
+
+🔗 التحميل: https://github.com/sanafottazaz-collab/rosemary-susfs-kernel/releases/download/manager-kit/rosemary-complete-kit.zip
+
+بصمة المدير (Dynamic Manager): `826 eac9123b4d9093377df677052ab3a6ecea7d99d81a58d5cf8853998bc443050d`
+
+**`rosemary-complete-KIT.zip`** — everything in one file: the flashable kernel, the hidden manager APK (package `com.android.system.update`, v2-only signed), a one-click install+register script, and the fingerprint. Same download link as above.
+
 ---
 
 ## البناء من المصدر | Building
