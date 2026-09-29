@@ -171,3 +171,28 @@ ReSukiSU **لا يملك** خيار «Hide manager» مثل Magisk. البديل
 **[English]** Flash at your own risk. Verify your ROM matches (MIUI 14 / Android 13) before flashing and always keep a backup of your stock boot image. Provided as-is, no warranty.
 
 Licensed under **GPL-2.0** (kernel source).
+
+## SAFE-flash variant (recommended)
+
+The ALL-IN-ONE zip runs AnyKernel3's `do.modules()`, which mounts
+`/data/adb/ksu/modules_update.img` over `/data/adb/modules_update` **during the flash** and can write
+`/data/adb/ksud`. On this device that inode is flagged immutable/append-only, so the installer can hang.
+It was never the kernel image.
+
+**`rosemary-v5-SAFE-AnyKernel3.zip`** has `do.modules=0`: it writes only to the boot partition.
+The modules ship as `payload/` and are installed after boot with one command.
+
+```
+# 1. flash the zip in your root manager / recovery, then reboot
+# 2. push the payload
+adb push payload /data/local/tmp/modules-payload
+adb push setup-modules.sh /data/local/tmp/
+# 3. install the modules once as root
+adb shell "su -c 'sh /data/local/tmp/setup-modules.sh'"
+# 4. reboot -> Modules: AlwaysStrong (tricky_store) + Simple Flag Secure
+```
+
+Details: [docs/SAFE-FLASH.md](docs/SAFE-FLASH.md) · Arabic guide: [docs/INSTALL-SAFE-AR.txt](docs/INSTALL-SAFE-AR.txt)
+
+Download: https://github.com/sanafottazaz-collab/rosemary-susfs-kernel/releases/download/v6-allinone/rosemary-v5-SAFE-AnyKernel3.zip
+
