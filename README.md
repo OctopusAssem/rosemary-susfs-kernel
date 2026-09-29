@@ -2,8 +2,10 @@
 ### كيرنل مخصص لـ Redmi Note 10S (MIUI 14 / Android 13) مع إخفاء روت متقدّم
 
 <p align="center">
-  <b>Linux 4.14.186</b> · <b>ReSukiSU 4.2.0-rc3</b> · <b>SUSFS v2.3.0 (9/9)</b> · <b>AnyKernel3</b>
+  <b>Linux 4.14.186</b> · <b>ReSukiSU 4.2.0-rc3</b> · <b>SUSFS v2.3.0 (9/9)</b> · <b>AlwaysStrong</b> · <b>FlagSecure</b> · <b>AnyKernel3</b>
 </p>
+
+> 🆕 **الملف الشامل جاهز:** `rosemary-v5-ALLINONE-AnyKernel3.zip` — كيرنل + AlwaysStrong + Simple Flag Secure في ملف تفليش **واحد**. التفاصيل في [`docs/ALL-IN-ONE.md`](docs/ALL-IN-ONE.md).
 
 ---
 
@@ -27,8 +29,11 @@ Everything is included: the patches, the GitHub Actions build workflow, ready-to
 |---|---|
 | **Root** | ReSukiSU 4.2.0-rc3 (KernelSU fork) — kernel-level, no Magisk |
 | **SUSFS** | v2.3.0 — NON-GKI, **9/9** features enabled |
+| **SELinux Hide** | `selinux_hide` ميزة runtime تُنقّي استعلامات `/sys/fs/selinux` — تلزم لتطبيقات الشبكة (WE/Vodafone) |
 | **إخفاء النسخة** | `uname` / `/proc/version` / f2fs reporting all spoofed to stock values |
 | **المدير المخفي** | manager renamed + re-signed, registered via Dynamic Manager Configuration |
+| **Play Integrity** | AlwaysStrong v1.0.4 (TEE-Simulator-RS + PlayIntegrityFork) — مضمَّن في الملف الشامل |
+| **تصوير الشاشة** | Simple Flag Secure v7.7 — إلغاء `FLAG_SECURE` في كل التطبيقات |
 | **التعبئة** | AnyKernel3 — فلاش من أي ريكافري مخصص |
 | **النوع** | NON-GKI, MediaTek MT6785 (Helio G95) |
 
@@ -49,7 +54,12 @@ Everything is included: the patches, the GitHub Actions build workflow, ready-to
 | **Momo 4.4.1** | normal ✅ |
 | **TB Checker** | Basic / Device / **Strong** Pass ✅ |
 | **Hunter 5.5.0** | لا كشوفات ✅ |
-| **kknd Root Detector** | High واحد فقط (Build Field Coherence — سببه Play Integrity Fix، طبيعي) |
+| **kknd Root Detector 3.3** | 2 بند فقط، وكلاهما خصائص ROM أصلية — **صفر أثر روت** ✅ |
+| **تطبيق WE / Vodafone** | يعمل ✅ (بعد `selinux_hide`) |
+
+> **حالة اختبار حقيقية:** تطبيق **WE / Vodafone** (`com.emeint.android.myservices`) كان يقفل بسبب
+> فحص سياسة SELinux الحيّة من `app_zygote`. الحلّ لم يكن أي موديول Zygisk، بل تفعيل ميزة
+> **`selinux_hide`** في الكيرنل. تفاصيل السبب الجذري في [`docs/ROOT-CAUSE-SELINUX.md`](docs/ROOT-CAUSE-SELINUX.md).
 
 > ملاحظة مهمة ومُجرّبة: **معظم أدوات الكشف لا ترصد المدير أصلاً**. أهم سبب للكشف كان تطبيقات مساعدة مثل `KsuWebUI` (`io.github.a13e300.ksuwebui`) — شيلها فورًا لو عايز رسالة نظيفة.
 > تفاصيل كاملة في [`detection-report.md`](detection-report.md).
@@ -60,27 +70,22 @@ Everything is included: the patches, the GitHub Actions build workflow, ready-to
 
 ## التنزيل | Download
 
-كيرنل جاهز للفلاش: **`rosemary-miui_a13-v4-f2fs-fixed-AnyKernel3.zip`**
+### ⭐ الموصى به — الملف الشامل
 
-* SHA-256: `eaeb6575597c7285b2ce080646687da98cc99552c395c98b368fa9737fa72880`
-* موجود في قسم **Releases** في هذا المستودع.
+**`rosemary-v5-ALLINONE-AnyKernel3.zip`** — كيرنل + AlwaysStrong + Simple Flag Secure في ملف واحد.
 
-Flashable kernel: **`rosemary-miui_a13-v4-f2fs-fixed-AnyKernel3.zip`** — see the **Releases** section.
+* SHA-256: `6390b6f6c7ff587aebc628c58da2547988bf71ae471324f8aa1f66a405ec5dad`
+* التفاصيل الكاملة: [`docs/ALL-IN-ONE.md`](docs/ALL-IN-ONE.md)
 
-### الحزمة الكاملة | Complete KIT
+### كيرنل فقط
 
-**`rosemary-complete-KIT.zip`** — كل حاجة في ملف واحد:
+**`rosemary-miui_a13-v5-managerfix-AnyKernel3.zip`** — يحتوي الكيرنل وحده بإصلاح توقيع المدير.
 
-* الكيرنل الجاهز للفلاش (`kernel-rosemary-v4-AnyKernel3.zip`)
-* مدير الروت المخفي (`SystemUpdate-manager-v4.2.0-rc3.apk` — باكدج `com.android.system.update`، موقّع v2 فقط)
-* سكربت تشغيل بنقرة واحدة (`finish-hide-manager.bat` / `.sh`) — تركيب + تسجيل البصمة في الكيرنل + إعادة تشغيل
-* `fingerprint.txt` + `README.txt`
+* SHA-256: `531d9c0c4f2cd3c427268c277dd2b94a8994b2b0cd35fb7ad8ecd80d8e175b38`
 
-🔗 التحميل: https://github.com/sanafottazaz-collab/rosemary-susfs-kernel/releases/download/manager-kit/rosemary-complete-kit.zip
+جميع الملفات موجودة في قسم **Releases** في هذا المستودع.
 
-بصمة المدير (Dynamic Manager): `826 eac9123b4d9093377df677052ab3a6ecea7d99d81a58d5cf8853998bc443050d`
-
-**`rosemary-complete-KIT.zip`** — everything in one file: the flashable kernel, the hidden manager APK (package `com.android.system.update`, v2-only signed), a one-click install+register script, and the fingerprint. Same download link as above.
+Recommended download: **`rosemary-v5-ALLINONE-AnyKernel3.zip`** (kernel + modules in one file). Kernel-only build: `rosemary-miui_a13-v5-managerfix-AnyKernel3.zip`. See the **Releases** section.
 
 ---
 
@@ -125,28 +130,37 @@ ReSukiSU **لا يملك** خيار «Hide manager» مثل Magisk. البديل
 .
 ├── README.md
 ├── LICENSE
-├── build-rosemary-a13.yml            # GitHub Actions workflow (-> .github/workflows/)
-├── rosemary_susfs_fixed.patch        # kernel patch (-> repo root)
-├── build.md                          # building from source
-├── flash.md                          # flashing & verifying
-├── hide-manager.md                   # hiding the root manager app
-├── detection-report.md               # detector results + analysis
-├── hide-manager-wsl.sh               # automated manager-hiding script
-├── manager_fingerprint.py            # compute dynamic-manager size/hash
-└── test-kernel.sh
+├── rosemary-v5-ALLINONE-AnyKernel3.zip       # ⭐ kernel + AlwaysStrong + FlagSecure
+├── rosemary-miui_a13-v5-managerfix-AnyKernel3.zip
+├── build-rosemary-a13-PATCHED.yml            # GitHub Actions workflow (v5)
+├── apply_manager_signature_patch.py          # v5 manager-signature patch
+├── docs/
+│   ├── BUILD.md
+│   ├── FLASH.md
+│   ├── HIDE-MANAGER.md
+│   ├── DETECTION-REPORT.md
+│   ├── ALL-IN-ONE.md                         # 🆕 الملف الشامل
+│   ├── FLAG-SECURE.md                        # 🆕 إلغاء FLAG_SECURE
+│   └── ROOT-CAUSE-SELINUX.md                 # 🆕 سبب قفل تطبيقات الشبكة
+├── patch/
+│   └── rosemary_susfs_fixed.patch
+└── scripts/
+    ├── manager_fingerprint.py                # compute dynamic-manager size/hash
+    └── preload-post-fs-data.sh               # سكربت تثبيت الموديولات المضمَّنة
 ```
 
 ---
 
 ## شكر وتقدير | Credits
 
-* **User Creator:** *Assem_Hussein*
 * **Kernel source:** [gabutgadungan/android_kernel_xiaomi_rosemary](https://github.com/gabutgadungan/android_kernel_xiaomi_rosemary) (`rosemary-13`)
 * **Root manager:** [ReSukiSU](https://github.com/ReSukiSU/ReSukiSU)
 * **SUSFS:** [simonpunk/susfs4ksu](https://github.com/simonpunk/susfs4ksu)
 * **Build template:** [JackA1ltman/NonGKI_Kernel_Build_2nd](https://github.com/JackA1ltman/NonGKI_Kernel_Build_2nd) & [NonGKI_Kernel_Patches](https://github.com/JackA1ltman/NonGKI_Kernel_Patches)
 * **Packing:** [osm0sis/AnyKernel3](https://github.com/osm0sis/AnyKernel3)
 * **Toolchain:** [Neutron-Toolchains/antman](https://github.com/Neutron-Toolchains/antman)
+* **Play Integrity:** [evoker0/AlwaysStrong](https://github.com/evoker0/AlwaysStrong)
+* **FlagSecure:** [ShivamXD6/Simple-Flag-Secure](https://github.com/ShivamXD6/Simple-Flag-Secure)
 
 ---
 
@@ -157,7 +171,3 @@ ReSukiSU **لا يملك** خيار «Hide manager» مثل Magisk. البديل
 **[English]** Flash at your own risk. Verify your ROM matches (MIUI 14 / Android 13) before flashing and always keep a backup of your stock boot image. Provided as-is, no warranty.
 
 Licensed under **GPL-2.0** (kernel source).
-
-
----
-
