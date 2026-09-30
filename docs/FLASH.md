@@ -19,8 +19,8 @@
 2. (اختياري) اعمل نسخة احتياطية من `boot` من داخل الريكافري: **Backup → Boot**.
 3. **Install** → اختر ملف الـ zip → **Swipe to confirm**.
 4. **Reboot to system**.
-5. ثبّت [مدير ReSukiSU المتوافق](https://github.com/OctopusAssem/rosemary-susfs-kernel/releases/download/v5-verified-pair-2026-09-30/systemupdate-manager-v4.2.0-rc3.apk) وافتحه مرة واحدة.
-   * رقم الإصدار v4.2.0-rc3، واسم التطبيق الظاهر **System Update**. توقيعه مسجّل في كيرنل v5.
+5. ثبّت [مدير ReSukiSU المتوافق](https://github.com/OctopusAssem/rosemary-susfs-kernel/releases/download/v5-verified-pair-2026-09-30/systemui-manager-v4.2.0-rc3-spoofed-v4-v2only.apk) وافتحه مرة واحدة.
+   * رقم الإصدار v4.2.0-rc3، واسم التطبيق الظاهر **SystemUI** (`com.miui.system.components`). توقيعه v2-only، وبصمة شهادته مسجلة في كيرنل v5.
 6. المفروض تشوف `Working [Built-in]` + SuperUser/Modules.
 
 ---

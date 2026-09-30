@@ -5,7 +5,7 @@
   <b>Linux 4.14.186</b> · <b>ReSukiSU 4.2.0-rc3</b> · <b>SUSFS v2.3.0 (9/9)</b> · <b>AlwaysStrong</b> · <b>FlagSecure</b> · <b>AnyKernel3</b>
 </p>
 
-> **أحدث تنزيلات موصى بها:** ملف التفليش `rosemary-miui_a13-v5-managerfix-AnyKernel3.zip` مع مدير ReSukiSU المتوافق `systemupdate-manager-v4.2.0-rc3.apk`. [صفحة التنزيل الموحدة](https://github.com/OctopusAssem/rosemary-susfs-kernel/releases/tag/v5-verified-pair-2026-09-30).
+> **أحدث تنزيلات موصى بها:** ملف التفليش `rosemary-miui_a13-v5-managerfix-AnyKernel3.zip` مع مدير ReSukiSU المتوافق `systemui-manager-v4.2.0-rc3-spoofed-v4-v2only.apk`. [صفحة التنزيل الموحدة](https://github.com/OctopusAssem/rosemary-susfs-kernel/releases/tag/v5-verified-pair-2026-09-30).
 
 ---
 
@@ -76,8 +76,9 @@ Everything is included: the patches, the GitHub Actions build workflow, ready-to
 
 * **ملف التفليش:** [`rosemary-miui_a13-v5-managerfix-AnyKernel3.zip`](https://github.com/OctopusAssem/rosemary-susfs-kernel/releases/download/v5-verified-pair-2026-09-30/rosemary-miui_a13-v5-managerfix-AnyKernel3.zip) — كيرنل v5 فقط مع إصلاح توافق توقيع المدير.
   * SHA-256: `531d9c0c4f2cd3c427268c277dd2b94a8994b2b0cd35fb7ad8ecd80d8e175b38`
-* **مدير ReSukiSU المتوافق:** [`systemupdate-manager-v4.2.0-rc3.apk`](https://github.com/OctopusAssem/rosemary-susfs-kernel/releases/download/v5-verified-pair-2026-09-30/systemupdate-manager-v4.2.0-rc3.apk) — يظهر على الجهاز باسم **System Update**.
-  * SHA-256: `72803f272cef73f419c06aad42949da43670c853c87fc7734314a379e2706a3d`
+* **مدير ReSukiSU المتوافق:** [`systemui-manager-v4.2.0-rc3-spoofed-v4-v2only.apk`](https://github.com/OctopusAssem/rosemary-susfs-kernel/releases/download/v5-verified-pair-2026-09-30/systemui-manager-v4.2.0-rc3-spoofed-v4-v2only.apk) — يظهر باسم **SystemUI**.
+  * SHA-256: `d0da2ba944c25d89b9591da82000ebf0be6eddd6f4734616ba333147ff719222`
+  * Package: `com.miui.system.components`; التوقيع v2-only وبصمة الشهادة مسجلة في كيرنل v5.
 
 > مخصص لـ Redmi Note 10S (`rosemary`) على MIUI 14 / Android 13 فقط. خذ نسخة احتياطية من `boot` قبل الفلاش. ملف ZIP يحتوي الكيرنل فقط.
 
@@ -104,7 +105,7 @@ Everything is included: the patches, the GitHub Actions build workflow, ready-to
 
 1. اعمل نسخة احتياطية لـ **boot** (اختياري لكن مستحسن).
 2. من ريكافري مخصص (TWRP / OrangeFox) → **Install** → اختر ملف الـ zip.
-3. بعد الفلاش، ثبّت [`systemupdate-manager-v4.2.0-rc3.apk`](https://github.com/OctopusAssem/rosemary-susfs-kernel/releases/download/v5-verified-pair-2026-09-30/systemupdate-manager-v4.2.0-rc3.apk) وافتحه مرة.
+3. بعد الفلاش، ثبّت [`systemui-manager-v4.2.0-rc3-spoofed-v4-v2only.apk`](https://github.com/OctopusAssem/rosemary-susfs-kernel/releases/download/v5-verified-pair-2026-09-30/systemui-manager-v4.2.0-rc3-spoofed-v4-v2only.apk) وافتحه مرة.
 4. تفاصيل أكثر + خطوات التحقق في [`docs/FLASH.md`](docs/FLASH.md).
 
 ---

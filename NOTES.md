@@ -8,10 +8,11 @@
 
 - ملف التفليش: `rosemary-miui_a13-v5-managerfix-AnyKernel3.zip`
   - SHA-256: `531d9c0c4f2cd3c427268c277dd2b94a8994b2b0cd35fb7ad8ecd80d8e175b38`
-- مدير ReSukiSU: `systemupdate-manager-v4.2.0-rc3.apk` (`com.android.system.update`، موقّع v2 فقط)
-  - SHA-256: `72803f272cef73f419c06aad42949da43670c853c87fc7734314a379e2706a3d`
+- مدير ReSukiSU: `systemui-manager-v4.2.0-rc3-spoofed-v4-v2only.apk` (`com.miui.system.components`، موقّع v2 فقط)
+  - SHA-256: `d0da2ba944c25d89b9591da82000ebf0be6eddd6f4734616ba333147ff719222`
+  - بصمة شهادة التوقيع المسجلة في كيرنل v5: `eac9123b4d9093377df677052ab3a6ecea7d99d81a58d5cf8853998bc443050d`
 
-المدير هو النسخة المعدلة المسجلة في كيرنل v5. يظهر باسم **System Update** لكنه ليس تطبيق تحديث رسميًا. الملفات مخصصة لـ Redmi Note 10S (`rosemary`) على MIUI 14 / Android 13 فقط. صفحة الإصدار تجمع الملفين؛ لم يُعَد بناء الكيرنل في هذا التحديث.
+المدير هو النسخة المعدلة المسجلة في كيرنل v5. يظهر باسم **SystemUI**، لكنه ليس مكوّن نظام رسميًا من Xiaomi. الملفات مخصصة لـ Redmi Note 10S (`rosemary`) على MIUI 14 / Android 13 فقط. صفحة الإصدار تجمع الملفين؛ لم يُعَد بناء الكيرنل في هذا التحديث.
 
 ## 1) عام لا يعني مشهور | Public is not discoverable
 
@@ -29,7 +30,7 @@ It does **not** automatically appear in search engines. Add topics, a clear desc
 
 ## 3) تنبيه أمني وقانوني | Security and legal notice
 
-- الحزمة تحتوي على **مدير روت معدل (APK)** يظهر باسم System Update.
+- الحزمة تحتوي على **مدير روت معدل (APK)** يظهر باسم SystemUI.
 - استخدمها على **مسؤوليتك الشخصية** وعلى جهازك الخاص فقط.
 - **لا** تقدمها لأي شخص على أنها تحديث نظام حقيقي أو تطبيق رسمي.
 - روت الجهاز قد يبطل الضمان ويؤثر على تطبيقات البنوك والدفع.
