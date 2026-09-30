@@ -195,5 +195,4 @@ adb shell "su -c 'sh /data/local/tmp/setup-modules.sh'"
 
 Details: [docs/SAFE-FLASH.md](docs/SAFE-FLASH.md) · Arabic guide: [docs/INSTALL-SAFE-AR.txt](docs/INSTALL-SAFE-AR.txt)
 
-Download: https://github.com/sanafottazaz-collab/rosemary-susfs-kernel/releases/download/v6-allinone/rosemary-v5-SAFE-AnyKernel3.zip
-
+Download: https://github.com/OctopusAssem/rosemary-susfs-kernel/releases/download/v6-allinone/rosemary-v5-SAFE-AnyKernel3.zip

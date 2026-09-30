@@ -54,6 +54,6 @@ sha256 لتطبيق المدير: 72803f272cef73f419c06aad42949da43670c853c87fc7
 - Native Detector / Momo / TB Checker / Hunter: نظيفة.
 
 ## 8) روابط | Links
-- المستودع: https://github.com/sanafottazaz-collab/rosemary-susfs-kernel
-- الإصدار: https://github.com/sanafottazaz-collab/rosemary-susfs-kernel/releases/tag/manager-kit
+- المستودع: https://github.com/OctopusAssem/rosemary-susfs-kernel
+- الإصدار: https://github.com/OctopusAssem/rosemary-susfs-kernel/releases/tag/manager-kit
 - الموقع: https://rosemary-susfs-kernel.pages.bu.app/
