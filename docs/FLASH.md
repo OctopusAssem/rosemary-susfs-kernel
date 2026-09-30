@@ -15,12 +15,12 @@
 
 ## خطوات الفلاش | Steps
 
-1. نزّل `rosemary-miui_a13-v4-f2fs-fixed-AnyKernel3.zip` من قسم Releases.
+1. نزّل [`rosemary-miui_a13-v5-managerfix-AnyKernel3.zip`](https://github.com/OctopusAssem/rosemary-susfs-kernel/releases/download/v5-verified-pair-2026-09-30/rosemary-miui_a13-v5-managerfix-AnyKernel3.zip) من صفحة التنزيل الحالية.
 2. (اختياري) اعمل نسخة احتياطية من `boot` من داخل الريكافري: **Backup → Boot**.
 3. **Install** → اختر ملف الـ zip → **Swipe to confirm**.
 4. **Reboot to system**.
-5. ثبّت مدير **ReSukiSU** (نفس الإصدار v4.2.0-rc3) وافتحه مرة واحدة.
-   * لو المدير مخفي: التطبيق هيظهر باسم **System Update**.
+5. ثبّت [مدير ReSukiSU المتوافق](https://github.com/OctopusAssem/rosemary-susfs-kernel/releases/download/v5-verified-pair-2026-09-30/systemupdate-manager-v4.2.0-rc3.apk) وافتحه مرة واحدة.
+   * رقم الإصدار v4.2.0-rc3، واسم التطبيق الظاهر **System Update**. توقيعه مسجّل في كيرنل v5.
 6. المفروض تشوف `Working [Built-in]` + SuperUser/Modules.
 
 ---
