@@ -110,6 +110,22 @@ Everything is included: the patches, the GitHub Actions build workflow, ready-to
 
 ---
 
+## ريكافري PBRP 4.14 — الطريقة المُثبتة 100% | Verified PBRP recovery
+
+دليل كامل لمَن يريد تثبيت **ريكافري PBRP 4.0 متوافق مع كيرنل 4.14** ثم الكيرنل المعدّل،
+بالترتيب الذي **نجح فعليًا 100%** على Redmi Note 10S (rosemary / MT6785 / UFS / MIUI 14):
+
+> 🧩 **مهم:** ريكافري rosemary لازم يكون بعائلة الكيرنل **4.14**. النسخ المبنية على 4.19
+> تسبب بوت لوب وقد تختفي شاشة fastboot.
+
+**ملخص الترتيب:** ستوك boot → تعطيل vbmeta → فلاش `PBRP-rosemary-4.0-4.14.img` → الإقلاع للريكافري →
+(من داخل PBRP **بنفس الجلسة بدون ريستارت**) فلاش vbmeta الستوك + أقسام B → فلاش PBRP zip →
+فلاش الكيرنل → Reboot.
+
+الدليل الكامل بالخطوات والأوامر وبصمات SHA-256: [`docs/RECOVERY-PBRP.md`](docs/RECOVERY-PBRP.md)
+
+---
+
 ## إخفاء مدير الروت | Hiding the manager
 
 ReSukiSU **لا يملك** خيار «Hide manager» مثل Magisk. البديل: إعادة تسمية الباكدج + توقيع جديد + تسجيل البصمة في الكيرنل عبر `dynamic-manager`.
@@ -138,7 +154,8 @@ ReSukiSU **لا يملك** خيار «Hide manager» مثل Magisk. البديل
 │   ├── DETECTION-REPORT.md
 │   ├── ALL-IN-ONE.md                         # 🆕 الملف الشامل
 │   ├── FLAG-SECURE.md                        # 🆕 إلغاء FLAG_SECURE
-│   └── ROOT-CAUSE-SELINUX.md                 # 🆕 سبب قفل تطبيقات الشبكة
+│   ├── ROOT-CAUSE-SELINUX.md                 # 🆕 سبب قفل تطبيقات الشبكة
+│   └── RECOVERY-PBRP.md                      # 🆕 ريكافري PBRP 4.14 (الطريقة المثبتة 100%)
 ├── patch/
 │   └── rosemary_susfs_fixed.patch
 └── scripts/
